@@ -19,7 +19,14 @@ Detecting and handling the end of file properly is often a critical issue in a f
 #include <stdio.h>
 
 int main(){
+  char c;
+  FILE *fp=fopen("lorem.txt","r");
+  FILE *fout=fopen("output.txt","w");
+  if (fp==NULL)
+     return -1;
+  while(fscanf(fp,"%c",&c)==1)
+    fprintf(fout,"%c",c);
 
-
+  fclose(fp);fclose(fout);
   return 0;
 }
